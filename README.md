@@ -16,13 +16,20 @@
 
 第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，在源代码中写的中文输出可能会有乱码
 > Python3 的字符串使用Unicode，直接支持多语言
-#### 数据类型
+#### 数据类型和字符串
 - 整型、浮点型、字符串、布尔值（`True\False`）、 空值（`None`）
-
+- 关于字符串的函数
+    - `ord(char)`: 函数获取字符的整数表示
+    - `chr(num)`: 把编码转换为对应的字符
+    - `len(str)` : 计算字符串的长度
 - 字符串方法
-    - `ord()` : 获取字符的整数表示
-    - `chr()` : 把编码转换为对应的字符
-    - `len()` : 计算字符串的长度
+    - `count(str)`: 返回str在string里出现的次数
+    - `find(str)`: 检查str是否包含在字符串中，如果在返回索引，否则返回-1 
+    - `replace(old, new [,max])`: 把 将字符串中的 old 替换成 new,如果 max 指定，则替换不超过 max 次。
+    - `split(sep)`: 以指定分隔符将字符串转为列表
+    - `join`: 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串
+    - `lower()`: 转换字符串中所有大写字符为小写
+    - `upper()`: 转换字符串中所有小写字符为大写
     - 占位符
         ```
         %d 整数
@@ -31,6 +38,18 @@
         %x 十六进制整数
         ```
 
+#### list和tuple
+- list
+    - `len(list)`: 获得list元素的个数
+    - `list[index]`: 访问list中index位置的元素,index为-1直接获取最后一个元素
+    - `list[start:end]`: 获得list中从索引为start到end不包含end之间的元素
+    - `list.append(item)`: 往list中追加元素到末尾
+    - `list.insert(index,item)`: 把元素插入到索引为index的位置
+    - `list.pop([index])`: 删除list末尾的元素或删除指定位置的元素
+- tuple
+    > tuple和list非常类似，但是`tuple一旦初始化就不能修改`。它也没有append()，insert()这样的方法。
+    因为tuple不可变，所以代码更安全。如果可能，`能用tuple代替list就尽量用tuple`。
+    *`只有1个元素的tuple定义时必须加一个逗号`*,以免你误解成数学计算意义上的括号
 ## 函数
 
 ## 高级特性
