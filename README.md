@@ -60,11 +60,11 @@
 
 dict的`get`方法取值，如果不存在返回`None`
 
-要删除一个key,使用`pop(key)`方法，对应的value也会被删除
+要删除一个key,使用`pop(key)`方法，对应的value也会被删除
 
-`clear()`方法清空字典中所有元素，`del dict`删除一个字典
+`clear()`方法清空字典中所有元素，`del dict`删除一个字典
 
-`set`和`dict`类似，但不存储value。由于key不能重复，所以set中没有重复的key
+`set`和`dict`类似，但不存储value。由于key不能重复，所以set中没有重复的key
 
 `add(key)`方法可以添加元素到set中
 
