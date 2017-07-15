@@ -78,3 +78,6 @@ def fact(n):
     return n * fact(n-1)
 
 print(fact(5))
+
+# 匿名函数
+lambda arg: arg + '1'  # Python匿名函数只支持一行表达式
