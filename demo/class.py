@@ -1,6 +1,8 @@
 #!usr/bin/env python3
 # -*- coding:utf-8 -*-
 
+from enum import Enum
+
 # Class 与 Instance
 class Student(object):
 
@@ -9,6 +11,10 @@ class Student(object):
         for k, v in kw.items():
             self.k = v
     
+    def __str__(self):
+        return 'Student object (name: %s)' % self.name
+    __repr__ = __str__
+
     def printInfo(self):
         for k, v in self.items():
             print(k, v)
@@ -88,3 +94,68 @@ stu.score = 80
 print(stu.name)
 print(stu.age)
 print(stu.score)
+
+# 多重继承
+class Bird(object):
+    def fly(self):
+        print('I can fly')
+
+class RunableMixin(object):
+    def run(self):
+        print('I can run')
+
+class Ostrich(Bird, RunableMixin):
+    def all_i_can(self):
+        self.fly()
+        self.run()
+ostrich = Ostrich()
+ostrich.all_i_can()
+
+# 定制类
+# __getattr__
+# 只有在没有找到属性的情况下，才调用__getattr__，已有的属性，比如name，不会在__getattr__中查找。
+class Chain(object):
+    def __init__(self, path=''):
+        self.__path = path
+    
+    def __getattr__(self, path):
+        return Chain('%s/%s' % (self.__path, path))
+
+    def __str__(self):
+        return self.__path
+    __repr__ = __str__
+
+    def __call__(self, path):
+        return Chain('%s:%s' % (self.__path, path))
+
+print(Chain().users('michael').group('student').repos)
+
+# 枚举类 Enum
+class Color(Enum):
+    red = 1
+    green = 2
+    blue = 3
+    yellow = 4
+    orange = 5
+    black = 6
+    red_alias = 1
+
+blue = Color.blue
+print(blue.name)
+print(blue.value)
+
+for c in Color:
+    print(c.name, c.value)
+
+# 如果想把值重复的成员也遍历出来，要用枚举的一个特殊属性__members__
+for name, member in Color.__members__.items():
+    print(name, member.value)
+
+# 使用 type() 函数创建 class
+def fn(self, name = 'world'):
+    print('Hello, %s' % name)
+
+Hello = type('Hello', (object,), dict(hello=fn))
+
+h = Hello()
+h.hello()
